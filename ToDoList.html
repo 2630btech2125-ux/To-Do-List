@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple task manager built with HTML, CSS and JavaScript.">
+  <title>Daylist — Task Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="logo" href="#">day<span>list.</span></a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <button class="side-link selected" data-filter="all"><span>▦</span> All tasks <b id="allCount">0</b></button>
+      <button class="side-link" data-filter="pending"><span>◷</span> Pending</button>
+      <button class="side-link" data-filter="completed"><span>✓</span> Completed</button>
+      <div class="sidebar-bottom"><div class="mini-avatar">KT</div><div><strong>My workspace</strong><small>Personal task board</small></div></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar"><div><p class="date-label" id="todayLabel">YOUR DAY</p><h1>Good day, let's focus<span>.</span></h1></div><div class="top-badge"><span class="online-dot"></span> Saved in this browser</div></header>
+
+      <section class="overview">
+        <article class="stat-card"><div class="stat-icon purple">▦</div><p>Total tasks</p><strong id="totalStat">0</strong><small>Across your task list</small></article>
+        <article class="stat-card"><div class="stat-icon orange">◷</div><p>Remaining</p><strong id="pendingStat">0</strong><small>Still to be completed</small></article>
+        <article class="stat-card"><div class="stat-icon green">✓</div><p>Completed</p><strong id="completedStat">0</strong><small>Tasks finished</small></article>
+        <article class="stat-card progress-card"><div class="progress-top"><p>Daily progress</p><strong id="progressPercent">0%</strong></div><div class="progress-track"><div id="progressBar"></div></div><small id="progressCaption">Let's get started!</small></article>
+      </section>
+
+      <section class="task-panel">
+        <div class="panel-heading"><div><p class="eyebrow">YOUR WORKSPACE</p><h2 id="listHeading">All tasks</h2></div><div class="filter-pills"><button class="filter-btn active" data-filter="all">All</button><button class="filter-btn" data-filter="pending">Pending</button><button class="filter-btn" data-filter="completed">Completed</button></div></div>
+        <form id="taskForm" class="add-task-form">
+          <input id="taskInput" type="text" maxlength="100" placeholder="What needs to get done?" autocomplete="off" aria-label="New task">
+          <button type="submit" class="add-btn">＋ Add task</button>
+        </form>
+        <p class="input-error" id="inputError" role="status"></p>
+        <div class="task-list" id="taskList" aria-live="polite"></div>
+        <div class="list-footer"><span id="listSummary">0 tasks</span><button id="clearCompleted" class="text-button">Clear completed</button></div>
+      </section>
+      <footer class="app-footer">A little progress each day adds up. <span>✦</span></footer>
+    </main>
+  </div>
+
+  <dialog id="editDialog" class="edit-dialog">
+    <form method="dialog" id="editForm">
+      <p class="eyebrow">UPDATE TASK</p><h2>Edit your task</h2>
+      <input id="editInput" type="text" maxlength="100" required>
+      <div class="dialog-actions"><button type="button" class="cancel-btn" id="cancelEdit">Cancel</button><button type="submit" class="add-btn">Save changes</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
